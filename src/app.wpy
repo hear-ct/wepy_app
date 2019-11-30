@@ -1,0 +1,155 @@
+<style lang="less">
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+import './common.js'
+
+export default class extends wepy.app {
+    config = {
+        pages: [
+            'pages/tabs/home',
+            'pages/tabs/cates',
+            'pages/tabs/search',
+            'pages/tabs/my',
+            'pages/tabs/cart',
+            'pages/goods_detail/main',
+            'pages/goods_list'
+        ],
+        window: {
+            backgroundTextStyle: 'light',
+            navigationBarBackgroundColor: '#d81e06',
+            navigationBarTitleText: '黑马优购',
+            navigationBarTextStyle: 'black'
+        },
+        tabBar: {
+            selectedColor: '#d81e06',
+            list: [
+                // 方法一
+                {
+                    // 页面的路径
+                    pagePath: 'pages/tabs/home',
+                    // 显示的文本
+                    text: '首页',
+                    // 显示的图标的路径
+                    iconPath: '/assets/icon/home.png',
+                    // 选中后的图标路径
+                    selectedIconPath: '/assets/icon/home-active.png'
+                },
+                {
+                    // 页面的路径
+                    pagePath: 'pages/tabs/cates',
+                    // 显示的文本
+                    text: '分类',
+                    // 显示的图标的路径
+                    iconPath: '/assets/icon/cates.png',
+                    // 选中后的图标路径
+                    selectedIconPath: '/assets/icon/cates-active.png'
+                },
+                {
+                    // 页面的路径
+                    pagePath: 'pages/tabs/search',
+                    // 显示的文本
+                    text: '搜索',
+                    // 显示的图标的路径
+                    iconPath: '/assets/icon/search.png',
+                    // 选中后的图标路径
+                    selectedIconPath: '/assets/icon/search-active.png'
+                },
+                {
+                    // 页面的路径
+                    pagePath: 'pages/tabs/cart',
+                    // 显示的文本
+                    text: '购物车',
+                    // 显示的图标的路径
+                    iconPath: '/assets/icon/cart.png',
+                    // 选中后的图标路径
+                    selectedIconPath: '/assets/icon/cart-active.png'
+                },
+                {
+                    // 页面的路径
+                    pagePath: 'pages/tabs/my',
+                    // 显示的文本
+                    text: '我的',
+                    // 显示的图标的路径
+                    iconPath: '/assets/icon/my.png',
+                    // 选中后的图标路径
+                    selectedIconPath: '/assets/icon/my-active.png'
+                }
+            ]
+            // { name : 'home' , text : '首页'},
+            // { name : 'cates' , text : '分类'},
+            // { name : 'search' , text : '搜索'},
+            // { name : 'cart' , text : '购物车'},
+            // { name : 'my' , text : '我的'}
+            // ].map(i=>({
+            //      {
+            //       // 页面的路径
+            //     pagePath:`pages/tabs/${i.name}`,
+            //     // 显示的文本
+            //     text:`${i.text}`,
+            //     // 显示的图标的路径
+            //     iconPath:`/assets/icon/${{my}}.png`,
+            //     // 选中后的图标路径
+            //     selectedIconPath:`/assets/icon/${i.name}-active.png`
+            // }
+            // })
+            // )
+        },
+        usingComponents: {
+            'van-badge': './vendor/vant/badge/index',
+            'van-badge-group': './vendor/vant/badge-group/index',
+            'van-row': './vendor/vant/row/index',
+            'van-col': './vendor/vant/col/index',
+            'van-search' : './vendor/vant/search/index',
+            "van-cell": "./vendor/vant/cell/index",
+            "van-cell-group": "./vendor/vant/cell-group/index",
+            "van-icon": "./vendor/vant/icon/index",
+            "van-card": "./vendor/vant/card/index"
+        }
+    }
+    globalData = {
+        userInfo: null
+    }
+
+    constructor() {
+        super()
+        this.use('requestfix')
+        this.use('promisify')
+
+
+         this.intercept('request', {
+            // 发出请求时的回调函数
+            config (p) {
+                // 对所有request请求中的OBJECT参数对象统一附加时间戳属性
+                wepy.showLoading({
+                    title:'加载中...'
+                })
+                // 必须返回OBJECT参数对象，否则无法发送请求到服务端
+                return p;
+            },
+
+            // 请求成功后的回调函数
+            success (p) {
+                // 可以在这里对收到的响应数据对象进行加工处理
+                console.log('request success: ', p);
+                // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+                return p;
+            },
+
+            //请求失败后的回调函数
+            fail (p) {
+                console.log('request fail: ', p);
+                // 必须返回响应数据对象，否则后续无法对响应数据进行处理
+                return p;
+            },
+
+            // 请求完成时的回调函数(请求成功或失败都会被执行)
+            complete (p) {
+                wepy.hideLoading()
+            }
+        });
+    }
+}
+</script>

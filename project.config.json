@@ -1,0 +1,82 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"appid": "wxba2245e8e599b11d",
+	"projectname": "wepy_heima",
+	"miniprogramRoot": "dist/",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"libVersion": "2.9.1",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/tabs/cates",
+					"pathName": "pages/tabs/cates",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tabs/search",
+					"pathName": "pages/tabs/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/goods_list",
+					"pathName": "pages/goods_list",
+					"query": "query=手机",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goods_detail/main",
+					"pathName": "pages/goods_detail/main",
+					"query": "goods_id=701",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,32 @@
+<template>
+    <view>
+      <block wx:for="{{goodsList}}" wx:key="index">
+        <van-card
+  num="{{item.goodsNumber}}"
+  price="{{item.goods_price}}"
+  title="{{item.goods_name}}"
+  thumb="{{item.goods_small_logo}}"
+  @tap="goGoodsDetail({{item.goods_id}})"
+></van-card>
+      </block>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import mix from '@/mixins/goods_list.js'
+export default class extends wepy.page {
+  mixins = [mix]
+  config = {
+    backgroundColor:'#eee',
+    enablePullDownRefresh: true,
+    navigationBarTitleText:'商品列表',
+    onReachBottomDistance:100,
+    
+  }
+  
+}
+</script>
+
+<style lang="less">
+</style>
